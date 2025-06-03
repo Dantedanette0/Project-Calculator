@@ -19,4 +19,11 @@ function divide(a, b) {
 }
 
 
-const a = parseFloat(prompt)
+// testing the functions in console
+// const a = parseFloat(prompt("Enter a:"));
+// const b = parseFloat(prompt("Enter b:"));
+
+// console.log("a + b =", add(a, b));
+// console.log("a - b =", subtract(a, b));
+// console.log("a * b =", multiply(a, b));
+// console.log("a / b =", divide(a, b));
