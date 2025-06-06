@@ -18,6 +18,9 @@ function divide(a, b) {
   return a / b;
 }
 
+let num1 = 0;
+let num2 = 0;
+let operator = "";
 
 // testing the functions in console
 // const a = parseFloat(prompt("Enter a:"));
