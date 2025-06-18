@@ -103,9 +103,12 @@ equalBtn.addEventListener("click", () => {
             result = divide(num1, num2);
             break;
         default:
-            result = "ERROR";
+            result = num1;
     }
     document.querySelector(".calc.input").textContent = result;
+    num1 = result;
+    num2 = '';
+    operator = "";
 });
 
 //clear button logic
