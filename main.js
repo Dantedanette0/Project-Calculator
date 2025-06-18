@@ -1,5 +1,5 @@
 function add(a, b) {
-  return a + b;
+  return +a + +b;
 }
 
 function subtract(a, b) {
@@ -18,8 +18,8 @@ function divide(a, b) {
   return a / b;
 }
 
-let num1 = 0;
-let num2 = 0;
+let num1 = '';
+let num2 = '';
 let operator = "";
 
 // testing the functions in console
@@ -39,10 +39,84 @@ const buttons = document.querySelectorAll(".calc.button.n");
 const input = document.querySelector(".calc.input");
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        input.textContent += button.textContent;
-    });
+  button.addEventListener("click", () => {
+    // if operator hasn’t been chosen yet, build num1
+    if (operator === "") {
+      num1 += button.textContent;
+      input.textContent = num1;
+    } 
+    // once operator is set, build num2
+    else {
+      num2 += button.textContent;
+      input.textContent = num2;
+    }
+  });
 });
+
+//every non number button
+const plusBtn = document.querySelector(".calc.button.plus");
+const minusBtn = document.querySelector(".calc.button.minus");
+const multBtn = document.querySelector(".calc.button.mult");
+const divideBtn = document.querySelector(".calc.button.taghsim");
+const equalBtn = document.querySelector(".calc.button.equal");
+const clearBtn = document.querySelector(".calc.button.clear");
+
+//set operator to the pressed button
+plusBtn.addEventListener("click", () => {
+    input.textContent = ""; 
+    operator = "+"; 
+    console.log("Operator set to +");
+});
+
+minusBtn.addEventListener("click", () => {
+    input.textContent = ""; 
+    operator = "-";
+    console.log("Operator set to -");
+});
+
+multBtn.addEventListener("click", () => {
+    input.textContent = ""; 
+    operator = "*";
+    console.log("Operator set to *");
+});
+
+divideBtn.addEventListener("click", () => {
+    input.textContent = ""; 
+    operator = "/";
+    console.log("Operator set to /");
+});
+
+//equal button logic
+equalBtn.addEventListener("click", () => {
+
+    switch (operator) {
+        case "+":
+            result = add(num1, num2);
+            break;
+        case "-":
+            result = subtract(num1, num2);
+            break;
+        case "*":
+            result = multiply(num1, num2);
+            break;
+        case "/":
+            result = divide(num1, num2);
+            break;
+        default:
+            result = "ERROR";
+    }
+    document.querySelector(".calc.input").textContent = result;
+});
+
+//clear button logic
+clearBtn.addEventListener("click", () => {
+    num1 = '';
+    num2 = '';
+    operator = "";
+    document.querySelector(".calc.input").textContent = "";
+    console.log("Calculator cleared");
+});
+
 
 
 
