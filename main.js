@@ -30,3 +30,19 @@ let operator = "";
 // console.log("a - b =", subtract(a, b));
 // console.log("a * b =", multiply(a, b));
 // console.log("a / b =", divide(a, b));
+
+
+
+//when a button is pressed the text of the button will be added to the content of 
+// the input's text
+const buttons = document.querySelectorAll(".calc.button.n");
+const input = document.querySelector(".calc.input");
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        input.textContent += button.textContent;
+    });
+});
+
+
+
