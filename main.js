@@ -36,10 +36,11 @@ let operator = "";
 //when a button is pressed the text of the button will be added to the content of 
 // the input's text
 const buttons = document.querySelectorAll(".calc.button.n");
-const input = document.querySelector(".calc.input");
+const input = document.querySelector(".calc.input.current");
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
+   
     // if operator hasn’t been chosen yet, build num1
     if (operator === "") {
       num1 += button.textContent;
@@ -105,7 +106,8 @@ equalBtn.addEventListener("click", () => {
         default:
             result = num1;
     }
-    document.querySelector(".calc.input").textContent = result;
+    document.querySelector(".calc.input.current").textContent = "";
+    document.querySelector(".calc.input.history").textContent = result;
     num1 = result;
     num2 = '';
     operator = "";
@@ -116,10 +118,22 @@ clearBtn.addEventListener("click", () => {
     num1 = '';
     num2 = '';
     operator = "";
-    document.querySelector(".calc.input").textContent = "";
+    document.querySelector(".calc.input.current").textContent = "";
+    document.querySelector(".calc.input.history").textContent = "";
     console.log("Calculator cleared");
 });
 
 
+
+// showing history of display
+const historyEl = document.querySelector('.calc.input.history');
+
+const buttonsForHistory = document.querySelectorAll('.calc.button:not(.clear):not(.equal)');
+
+buttonsForHistory.forEach(btn => {
+  btn.addEventListener('click', () => {
+    historyEl.textContent += btn.textContent;
+  });
+});
 
 
